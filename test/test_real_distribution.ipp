@@ -38,6 +38,11 @@
 #include <iostream>
 #include <vector>
 
+#ifdef BOOST_MSVC
+# pragma warning(push)
+# pragma warning(disable: 4244) // conversion from 'double' to 'int', possible loss of data
+#endif
+
 #include "statistic_tests.hpp"
 #include "chi_squared_test.hpp"
 
@@ -193,3 +198,8 @@ int main(int argc, char** argv) {
         return EXIT_FAILURE;
     }
 }
+
+#ifdef BOOST_MSVC
+# pragma warning(pop)
+#endif
+
