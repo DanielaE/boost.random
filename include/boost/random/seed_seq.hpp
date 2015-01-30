@@ -83,7 +83,7 @@ public:
                 *(first + k%n) ^ *(first + (k+p)%n) ^ *(first + (k+n-1)%n);
             r1 = r1 ^ (r1 >> 27);
             r1 = (r1 * 1664525u) & mask;
-            value_type r2 = r1 +
+            value_type r2 = r1 + static_cast<value_type>
                 ((k == 0) ? s :
                  (k <= s) ? k % n + v[k - 1] :
                  (k % n));
@@ -97,7 +97,7 @@ public:
                 & mask;
             r3 = r3 ^ (r3 >> 27);
             r3 = (r3 * 1566083941u) & mask;
-            value_type r4 = r3 - k%m;
+            value_type r4 = r3 - static_cast<value_type>(k%m);
             *(first + (k+p)%n) ^= r3;
             *(first + (k+q)%n) ^= r4;
             *(first + k%n) = r4;

@@ -106,6 +106,8 @@ public:
   }
 
 private:
+  impl & operator=(const impl &);
+  
   void error(const char * msg) {
     DWORD error_code = GetLastError();
     boost::throw_exception(

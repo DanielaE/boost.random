@@ -183,7 +183,7 @@ struct real_alias_table {
     {
         return true;
     }
-    static WeightType try_get_sum(const std::vector<WeightType>& weights)
+    static WeightType try_get_sum(const std::vector<WeightType>& /*weights*/)
     {
         return static_cast<WeightType>(1);
     }
@@ -451,7 +451,7 @@ public:
         if(WeightType limit = impl_type::try_get_sum(parm._probabilities)) {
             WeightType val = impl_type::generate_in_range(urng, limit);
             WeightType sum = 0;
-            std::size_t result = 0;
+            IntType result = 0;
             for(typename std::vector<WeightType>::const_iterator
                     iter = parm._probabilities.begin(),
                     end = parm._probabilities.end();
@@ -496,7 +496,7 @@ public:
     std::vector<WeightType> probabilities() const
     {
         std::vector<WeightType> result(_impl._alias_table.size());
-        std::size_t i = 0;
+        int i = 0;
         for(typename impl_type::alias_table_t::const_iterator
                 iter = _impl._alias_table.begin(),
                 end = _impl._alias_table.end();

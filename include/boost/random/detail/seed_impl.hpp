@@ -89,7 +89,7 @@ void generate_from_real(Engine& eng, Iter begin, Iter end)
 {
     using std::fmod;
     typedef typename Engine::result_type RealType;
-    const int Bits = detail::generator_bits<Engine>::value();
+    const int Bits = static_cast<int>(detail::generator_bits<Engine>::value());
     int remaining_bits = 0;
     boost::uint_least32_t saved_bits = 0;
     RealType multiplier = pow2<RealType>( Bits);
