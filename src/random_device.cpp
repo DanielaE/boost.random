@@ -133,6 +133,8 @@ public:
   }
 
 private:
+  impl & operator=(const impl &);
+  
 #if !defined(BOOST_RANDOM_WINDOWS_RUNTIME)
   void error(const char * msg) {
     DWORD error_code = GetLastError();
