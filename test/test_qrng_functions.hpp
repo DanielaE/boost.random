@@ -145,7 +145,7 @@ template<typename Engine>
 void test_max_seed(std::size_t dim)
 {
   typedef typename Engine::size_type size_type;
-  static const size_type maxseed = Engine::max();
+  static const size_type maxseed = static_cast<size_type>(Engine::max());
 
   Engine eng(dim);
   eng.seed(maxseed-1); // must succeed
