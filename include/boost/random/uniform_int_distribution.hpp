@@ -40,7 +40,7 @@ namespace detail {
 #pragma warning(push)
 // disable division by zero warning, since we can't
 // actually divide by zero.
-#pragma warning(disable:4723)
+#pragma warning(disable:4723 4724)
 #endif
 
 template<class Engine, class T>
