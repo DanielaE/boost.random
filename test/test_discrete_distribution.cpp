@@ -19,6 +19,10 @@
 #define BOOST_TEST_MAIN
 #include <boost/test/unit_test.hpp>
 
+#ifdef BOOST_MSVC
+# pragma warning(disable: 4127) // conditional expression is constant
+#endif
+
 using boost::random::test::RandomNumberDistribution;
 using boost::random::discrete_distribution;
 BOOST_CONCEPT_ASSERT((RandomNumberDistribution< discrete_distribution<> >));
