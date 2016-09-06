@@ -226,7 +226,7 @@ public:
                 } while(sqsum == 0);
                 // for all i: result[i] /= sqrt(sqsum)
                 std::transform(_container.begin(), _container.end(), _container.begin(),
-                               std::bind2nd(std::multiplies<RealType>(), 1/sqrt(sqsum)));
+                               std::bind(std::multiplies<RealType>(), std::placeholders::_1, 1/sqrt(sqsum)));
             }
         }
         return _container;
