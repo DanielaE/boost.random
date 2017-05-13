@@ -65,7 +65,7 @@ public:
 
       // set initial values of m from table
       for (unsigned k = 0; k != degree; ++k)
-        cj[dimension*k + dim] = SobolTables::minit(dim-1, k);
+        cj[dimension*k + dim] = static_cast<value_type>(SobolTables::minit(dim-1, k));
 
       // Calculate remaining elements for this dimension,
       // as explained in Bratley+Fox, section 2.

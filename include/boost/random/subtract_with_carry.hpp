@@ -268,21 +268,21 @@ private:
 
     friend struct detail::subtract_with_carry_discard;
 
-    IntType do_update(std::size_t current, std::size_t short_index, IntType carry)
+    IntType do_update(std::size_t current, std::size_t short_index, IntType carry_in)
     {
         IntType delta;
-        IntType temp = x[current] + carry;
+        IntType temp = x[current] + carry_in;
         if (x[short_index] >= temp) {
             // x(n) >= 0
             delta =  x[short_index] - temp;
-            carry = 0;
+            carry_in = 0;
         } else {
             // x(n) < 0
             delta = modulus - temp + x[short_index];
-            carry = 1;
+            carry_in = 1;
         }
         x[current] = delta;
-        return carry;
+        return carry_in;
     }
     /// \endcond
 
@@ -498,17 +498,17 @@ private:
 
     friend struct detail::subtract_with_carry_discard;
 
-    RealType do_update(std::size_t current, std::size_t short_index, RealType carry)
+    RealType do_update(std::size_t current, std::size_t short_index, RealType carry_in)
     {
-        RealType delta = x[short_index] - x[current] - carry;
+        RealType delta = x[short_index] - x[current] - carry_in;
         if(delta < 0) {
             delta += RealType(1);
-            carry = RealType(1)/_modulus;
+            carry_in = RealType(1)/_modulus;
         } else {
-            carry = 0;
+            carry_in = 0;
         }
         x[current] = delta;
-        return carry;
+        return carry_in;
     }
     /// \endcond
     std::size_t k;
