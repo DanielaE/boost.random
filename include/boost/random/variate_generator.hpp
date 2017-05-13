@@ -75,7 +75,7 @@ public:
      * Returns: distribution()(engine(), value).
      */
     template<class T>
-    result_type operator()(const T& value) { return _dist(engine(), value); }
+    result_type operator()(const T& value) { return _dist(engine(), static_cast<result_type>(value)); }
 
     /**
      * Returns: A reference to the associated uniform random number generator.
